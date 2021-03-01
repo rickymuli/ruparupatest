@@ -1,0 +1,201 @@
+version: 2.1
+jobs:
+  node:
+    working_directory: ~/ruparupamobileapps
+    docker:
+      - image: cimg/node:12.16
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: npm-v1-{{ checksum "package-lock.json" }}-{{ arch }}
+
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+
+      - run: npm install
+
+      - save_cache:
+          key: npm-v1-{{ checksum "package-lock.json" }}-{{ arch }}
+          paths:
+            - ~/.cache/npm
+
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+
+      - run:
+          name: jest tests
+          command: |
+            mkdir -p test-results/jest
+            npm run test
+          environment:
+            JEST_JUNIT_OUTPUT: test-results/jest/junit.xml
+
+      - persist_to_workspace:
+          root: ~/ruparupamobileapps
+          paths:
+            - node_modules
+
+      - store_test_results:
+          path: test-results
+
+      - store_artifacts:
+          path: test-results
+
+  macos-build-and-test:
+    working_directory: ~/ruparupamobileapps
+    macos:
+      xcode: 11.3.0
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: test
+
+    steps:
+      - checkout
+      - run:
+          command: cp fastlane/appcenter-config.json.example fastlane/appcenter-config.json
+          name: Copy appcenter config
+      - run:
+          command: cp fastlane/changelog.txt.example fastlane/changelog.txt
+          name: Copy changelog
+      - run:
+          command: cp android/app/ruparupa-mobileapp-key.keystore.example android/app/ruparupa-mobileapp-key.keystore
+          name: Copy keystore
+      - run:
+          command: cp android/app/debug.keystore.example android/app/debug.keystore
+          name: Copy keystore2
+      - run:
+          command: cp localConfig.js.example localConfig.js
+          name: Copy localConfig
+
+      - restore_cache:
+          key: npm-v1-{{ checksum "package-lock.json" }}-{{ arch }}
+
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+
+      - run: npm install
+
+      - save_cache:
+          key: npm-v1-{{ checksum "package-lock.json" }}-{{ arch }}
+          paths:
+            - ~/.cache/npm
+
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+
+      - restore_cache:
+          key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
+
+      #Pods directory is ignored to match default RN setup, but can also check them into source control
+      #https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
+      - restore_cache:
+          key: pods-v1-{{ checksum "ios/Podfile.lock" }}-{{ arch }}
+
+      - run: 
+          command: pod install
+          working_directory: ios
+
+      - run: 
+          command: bundle install
+          working_directory: ios
+
+      - save_cache:
+          key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
+          paths:
+            - vendor/bundle
+
+      - save_cache:
+          key: pods-v1-{{ checksum "ios/Podfile.lock" }}-{{ arch }}
+          paths:
+            - ios/Pods
+
+      - run:
+          name: Fastlane
+          command: bundle exec fastlane $FASTLANE_LANE
+          working_directory: ios
+
+      - store_artifacts:
+          path: output
+          
+      - store_test_results:
+          path: output/scan
+            
+  android-build-and-test:
+    working_directory: ~/ruparupamobileapps
+    docker:
+      - image: circleci/android:api-29-node
+    steps:
+      - checkout:
+          path: ~/ruparupamobileapps
+
+      - attach_workspace:
+          at: ~/ruparupamobileapps
+      - run:
+          command: |
+            while true; do
+              sleep 5
+              ps auxwwf
+              echo "======"
+            done
+          background: true
+          
+      - run:
+          command: cp fastlane/appcenter-config.json.example fastlane/appcenter-config.json
+          name: Copy appcenter config
+      - run:
+          command: cp fastlane/changelog.txt.example fastlane/changelog.txt
+          name: Copy changelog
+      - run:
+          command: cp android/app/ruparupa-mobileapp-key.keystore.example android/app/ruparupa-mobileapp-key.keystore
+          name: Copy keystore
+      - run:
+          command: cp android/app/debug.keystore.example android/app/debug.keystore
+          name: Copy keystore2
+      - run:
+          command: cp localConfig.js.example localConfig.js
+          name: Copy localConfig
+
+
+      # - restore_cache:
+      #     key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+
+      - run: 
+          name: 'bundle install'
+          command: | 
+            cd android
+            bundle install
+
+      # - save_cache:
+      #     key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+      #     paths:
+      #       - vendor/bundle
+      - run:
+          name: list
+          command: |
+            ls -l
+            pwd
+            npx -v
+      - run:
+          name: fastlane dev
+          command: |
+            mkdir -p build-results/fastlane
+            bundle exec fastlane android dev
+      # - store_test_results:
+      #     path: test-results
+
+      # - store_artifacts:
+      #     path: build-results
+
+workflows:
+  node-android-ios:
+    jobs:
+      - node
+      - android-build-and-test:
+          requires:
+            - node

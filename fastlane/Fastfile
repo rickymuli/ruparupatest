@@ -1,0 +1,234 @@
+platform :android do 
+  lane :build do     
+     gradle(task: 'clean', project_dir: 'android/')     
+     gradle(
+        task: 'assemble', 
+        build_type: 'release', 
+        project_dir: 'android/',
+        flavor: ENV["ANDROID_FLAVOUR"]
+     )   
+  end
+
+  lane :bundle do     
+     gradle(task: 'clean', project_dir: 'android/')     
+     gradle(
+        task: "bundle",
+        build_type: "Release",
+        project_dir: 'android/',
+        flavor: ENV["ANDROID_FLAVOUR"]
+    )  
+  end
+
+  desc 'Build and upload to App Center.'
+    lane :prod do
+        changelog = File.read("./changelog.txt")
+        content = load_json(json_path: "./fastlane/appcenter-config.json")
+        param = content["android"]["prod"]
+        build
+        appcenter_upload(
+            api_token: param["api_token"],
+            owner_name: param["owner_name"],
+            app_name: param["app_name"],
+            destinations: "*",
+            release_notes: changelog,
+        )
+    end
+  
+    desc 'Build and upload to App Center.'
+    lane :dev do
+        changelog = File.read("./changelog.txt")
+        content = load_json(json_path: "./fastlane/appcenter-config.json")
+        param = content["android"]["dev"]
+        build
+        appcenter_upload(
+            api_token: param["api_token"],
+            owner_name: param["owner_name"],
+            app_name: param["app_name"],
+            destinations: "*",
+            release_notes: changelog,
+        )
+    end
+
+    desc 'Build and upload to Google Play for Internal Testing.'
+    lane :upload_internal do
+        increment_version_name(gradle_file_path: './android/app/build.gradle')
+        increment_version_code(gradle_file_path: './android/app/build.gradle')
+        bundle
+        validate_play_store_json_key(json_key: './fastlane/google-play-api-key.json')
+        upload_to_play_store(
+            track: 'internal',
+            package_name: 'com.mobileappruparupa',
+            aab: './android/app/build/outputs/bundle/release/app-release.aab',
+            json_key: './fastlane/google-play-api-key.json'
+        )
+    end
+
+    desc 'Build and upload to App Center.'
+    lane :codepush do
+        changelog = File.read("./changelog.txt")
+        content = load_json(json_path: "./fastlane/appcenter-config.json")
+        param = content["android"]["dev"]
+        codepush_login(login_token: param["api_token"])
+        codepush_release_react(
+            app_name: param["owner_name"] + "/" + param["app_name"],
+            deployment_name: param["deployment_name"],
+            target_binary_version: param["binary_version"],
+            mandatory: param["mandatory"]
+        )
+    end
+
+     desc 'Build and upload to App Center.'
+    lane :codepush_production do
+        changelog = File.read("./changelog.txt")
+        content = load_json(json_path: "./fastlane/appcenter-config.json")
+        param = content["android"]["prod"]
+        codepush_login(login_token: param["api_token"])
+        codepush_release_react(
+            app_name: param["owner_name"] + "/" + param["app_name"],
+            deployment_name: param["deployment_name"],
+            target_binary_version: param["binary_version"],
+            mandatory: param["mandatory"]
+        )
+    end
+
+     desc 'Build and upload to App Center.'
+    lane :codepush_testing_production do
+        changelog = File.read("./changelog.txt")
+        content = load_json(json_path: "./fastlane/appcenter-config.json")
+        param = content["android"]["prod"]
+        codepush_login(login_token: param["api_token"])
+        codepush_release_react(
+            app_name: param["owner_name"] + "/" + param["app_name"],
+            deployment_name: "TestingProduction",
+            target_binary_version: param["binary_version"],
+            mandatory: param["mandatory"]
+        )
+    end
+  
+end
+
+platform :ios do 
+    desc 'Fetch certificates and provisioning profiles'
+  lane :cerr do
+    get_provisioning_profile(
+        username: 'admin@ruparupa.com',
+        app_identifier: 'com.ruparupa.ios.dev',
+        adhoc: true
+    )
+  end
+  lane :build do
+     gym(
+        scheme: 'Ruparupa', 
+        clean: true,
+        configuration: 'Release',
+        export_options: {
+            method: "ad-hoc",
+            provisioningProfiles: { 
+                "com.ruparupa.ios" => "com.ruparupa.ios AdHoc",
+            }
+        },
+        workspace: './ios/Ruparupa.xcworkspace', 
+        output_directory: './ios/'
+    ) 
+  end
+
+  desc 'Build and upload to App Center.'
+    lane :prod do
+        changelog = File.read("./changelog.txt")
+        content = load_json(json_path: "./fastlane/appcenter-config.json")
+        param = content["ios"]["prod"]
+        build
+        appcenter_upload(
+            api_token: param["api_token"],
+            owner_name: param["owner_name"],
+            app_name: param["app_name"],
+            destinations: "*",
+            release_notes: changelog,
+        )
+    end
+  
+    desc 'Build and upload to App Center.'
+    lane :dev do
+        ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "600"
+        ENV["FASTLANE_XCODEBUILD_SETTINGS_RETRIES"] = "10"
+        changelog = File.read("./changelog.txt")
+        content = load_json(json_path: "./fastlane/appcenter-config.json")
+        param = content["ios"]["dev"]
+        build
+        appcenter_upload(
+            api_token: param["api_token"],
+            ipa: "./ios/Ruparupa.ipa",
+            app_name: param["app_name"],
+            destinations: "*",
+            owner_name: param["owner_name"],
+            release_notes: changelog
+        )
+    end
+
+    desc 'Build and upload to Test Flight for Beta Testing.'
+    lane :upload_testflight do
+        increment_build_number_in_xcodeproj(xcodeproj: './ios/Ruparupa.xcodeproj', target: 'Ruparupa')
+        increment_version_number_in_xcodeproj(xcodeproj: './ios/Ruparupa.xcodeproj', bump_type: 'patch', target: 'Ruparupa')
+        update_code_signing_settings(path: './ios/Ruparupa.xcodeproj', use_automatic_signing: true)
+        gym(
+            scheme: 'Ruparupa',
+            configuration: 'Release',
+            workspace: './ios/Ruparupa.xcworkspace',
+            output_directory: './ios/',
+            export_xcargs: "-allowProvisioningUpdates"
+        )
+        api_key = load_json(json_path: "./fastlane/appstore-connect-api.json")
+        app_store_connect_api_key(
+            key_id: api_key["key_id"],
+            issuer_id: api_key["issuer_id"],
+            key_content: api_key["key_content"],
+            in_house: false
+        )
+        upload_to_testflight(
+            username: 'admin@ruparupa.com',
+            app_identifier: 'com.ruparupa.ios', 
+            ipa: './ios/Ruparupa.ipa'
+        )
+    end
+
+    desc 'Build and upload to App Center.'
+    lane :codepush do
+        changelog = File.read("./changelog.txt")
+        content = load_json(json_path: "./fastlane/appcenter-config.json")
+        param = content["ios"]["dev"]
+        codepush_login(login_token: param["api_token"])
+        codepush_release_react(
+            app_name: param["owner_name"] + "/" + param["app_name"],
+            deployment_name: param["deployment_name"],
+            mandatory: param["mandatory"]
+        )
+    end
+
+    desc 'Build and upload to App Center.'
+    lane :codepush_production do
+        changelog = File.read("./changelog.txt")
+        content = load_json(json_path: "./fastlane/appcenter-config.json")
+        param = content["ios"]["prod"]
+        codepush_login(login_token: param["api_token"])
+        codepush_release_react(
+            app_name: param["owner_name"] + "/" + param["app_name"],
+            deployment_name: param["deployment_name"],
+            target_binary_version: param["binary_version"],
+            mandatory: param["mandatory"]
+        )
+    end
+
+    desc 'Build and upload to App Center.'
+    lane :codepush_testing_production do
+        changelog = File.read("./changelog.txt")
+        content = load_json(json_path: "./fastlane/appcenter-config.json")
+        param = content["ios"]["prod"]
+        codepush_login(login_token: param["api_token"])
+        codepush_release_react(
+            app_name: param["owner_name"] + "/" + param["app_name"],
+            deployment_name: "TestingProduction",
+            target_binary_version: param["binary_version"],
+            mandatory: param["mandatory"]
+        )
+    end
+end

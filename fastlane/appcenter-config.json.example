@@ -1,0 +1,38 @@
+{
+    "android" : {
+        "dev" : {
+            "api_token": "c2e03b03c62dc06977f45d0d17cea428c82109a3",
+            "owner_name": "ruparupa-mobileapps",
+            "app_name": "sentry",
+            "deployment_name": "Staging",
+            "binary_version": "1.6.7",
+            "mandatory": true
+        },
+        "prod" : {
+            "api_token": "c2e03b03c62dc06977f45d0d17cea428c82109a3",
+            "owner_name": "ruparupa-mobileapps",
+            "app_name": "sentry",
+            "deployment_name": "Staging",
+            "binary_version": "1.6.7",
+            "mandatory": true
+        }
+    },
+    "ios" : {
+        "dev" : {
+            "api_token": "c2e03b03c62dc06977f45d0d17cea428c82109a3",
+            "owner_name": "ruparupa-mobileapps",
+            "app_name": "sentry-ios",
+            "deployment_name": "Staging",
+            "binary_version": "1.5.9",
+            "mandatory": true
+        },
+        "prod" : {
+            "api_token": "c2e03b03c62dc06977f45d0d17cea428c82109a3",
+            "owner_name": "ruparupa-mobileapps",
+            "app_name": "sentry-ios",
+            "deployment_name": "Staging",
+            "binary_version": "1.5.9",
+            "mandatory": true
+        }
+    }
+}

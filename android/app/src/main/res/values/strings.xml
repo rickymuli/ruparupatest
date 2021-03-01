@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ruparupa</string>
+    <string name="facebook_app_id">855189831288339</string>
+    <string name="fb_login_protocol_scheme">fb1150671895083596</string>
+    <string name="freshchat_file_provider_authority">com.example.demoapp.provider</string>
+    <string name="default_notification_channel_id">Categories</string>
+    <string name="google_api">AIzaSyB_6bAxemzLynbAhNO2Wl2lml9f8kFJJW8</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">Yj4J5bgiTt2vppHSZO-R1vYFxbcEw2o0ZFOTj</string>
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
+<string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+</resources>

@@ -1,0 +1,186 @@
+{
+  "project_info": {
+    "project_number": "1009995101116",
+    "firebase_url": "https://ruparupamobileapp-df258.firebaseio.com",
+    "project_id": "ruparupamobileapp-df258",
+    "storage_bucket": "ruparupamobileapp-df258.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009995101116:android:f466218d9ae10648",
+        "android_client_info": {
+          "package_name": "com.mobileappruparupa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009995101116-2qer1k4d4hpqaqbr162969i7lgru03uq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobileappruparupa",
+            "certificate_hash": "146af1f4f863cbf45f381000e7641a7510a88c75"
+          }
+        },
+        {
+          "client_id": "1009995101116-duh7l5gm956jihhndat2fkaubunqeog5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobileappruparupa",
+            "certificate_hash": "557b1744a0b6881e828479a5cd3b7bfe15c756c7"
+          }
+        },
+        {
+          "client_id": "1009995101116-8vi2nebrmkntajo8bn0f29mqop44i02b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobileappruparupa",
+            "certificate_hash": "6661a73dd3e6345b69664c89440dcc451a0e2c09"
+          }
+        },
+        {
+          "client_id": "1009995101116-uhiodbgh60sg3gcvgdp8rkldlem2gjuf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobileappruparupa",
+            "certificate_hash": "99b4a61f21d3dd0acc85c54d7e8ff7f8e1f40d5e"
+          }
+        },
+        {
+          "client_id": "1009995101116-73igg293tnt1eathrvvh6cdb8o3tg1i0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobileappruparupa",
+            "certificate_hash": "6fee96daea9c827c1030c51bd80847fd4f904abe"
+          }
+        },
+        {
+          "client_id": "1009995101116-aj31dmn1qs3j9209es827bfkm6qcnmoi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobileappruparupa",
+            "certificate_hash": "569fa34f40e20d1cf6960b9d2dfbe0845d7d94dd"
+          }
+        },
+        {
+          "client_id": "1009995101116-ft5kjrjpkjblslk935b9cee734cqg4d6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_6bAxemzLynbAhNO2Wl2lml9f8kFJJW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009995101116-ft5kjrjpkjblslk935b9cee734cqg4d6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1009995101116-h3ql37315j8i4nkfqa9jm9h4o1a57llf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ruparupa.storemode.ios.dev",
+                "app_store_id": "1526000351"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009995101116:android:b9f653fb72a5f5acba71b9",
+        "android_client_info": {
+          "package_name": "com.ruparupa.storemode.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009995101116-imcjcmfs26e3jkod2is9frsm38f0sqtm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ruparupa.storemode.android",
+            "certificate_hash": "557b1744a0b6881e828479a5cd3b7bfe15c756c7"
+          }
+        },
+        {
+          "client_id": "1009995101116-ft5kjrjpkjblslk935b9cee734cqg4d6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_6bAxemzLynbAhNO2Wl2lml9f8kFJJW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009995101116-ft5kjrjpkjblslk935b9cee734cqg4d6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1009995101116-h3ql37315j8i4nkfqa9jm9h4o1a57llf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ruparupa.storemode.ios.dev",
+                "app_store_id": "1526000351"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009995101116:android:bf58c806c03f4026ba71b9",
+        "android_client_info": {
+          "package_name": "id.co.acehardware.acerewards"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009995101116-181g0bhciovqk20o523eupon77f6sg3f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.co.acehardware.acerewards",
+            "certificate_hash": "557b1744a0b6881e828479a5cd3b7bfe15c756c7"
+          }
+        },
+        {
+          "client_id": "1009995101116-ft5kjrjpkjblslk935b9cee734cqg4d6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_6bAxemzLynbAhNO2Wl2lml9f8kFJJW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009995101116-ft5kjrjpkjblslk935b9cee734cqg4d6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1009995101116-h3ql37315j8i4nkfqa9jm9h4o1a57llf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ruparupa.storemode.ios.dev",
+                "app_store_id": "1526000351"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

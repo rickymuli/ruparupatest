@@ -1,0 +1,70 @@
+import localConfig from './localConfig'
+
+const config = {
+  DEBUG: localConfig.DEBUG,
+  developmentENV: localConfig.developmentENV || 'stg',
+  showTahuTextInput: localConfig.showTahu || false,
+  companyCode: 'ODI',
+  defaultMailto: 'help@ruparupa.com',
+  defaultPhone: '+622129670706',
+  momentLocale: 'id',
+  environment: 'mobile',
+  targetVisitor: 'human',
+  enablePopup: false,
+  enableGosend: true,
+  enableSocialLogin: false,
+  enablePointRedeem: false,
+  enableWishList: true,
+  desktopBrandSplitted: 20,
+  mobileBrandSplitted: 8,
+  paymentURL: 'https://payment.ruparupa.com/checkout',
+  baseURL: 'https://www.ruparupa.com/',
+  baseURLmobile: 'https://m.ruparupa.com/',
+  apiURL: 'https://wapi.ruparupa.com/',
+  tahuURL: 'https://gideon.ruparupa.com/wapi',
+  geoURL: 'https://get.geojs.io',
+  reviewRatingURL: 'https://wapi.ruparupa.com/wapi-review',
+
+  // STAGING CONFIG
+  stgPaymentURL: 'https://payment.stg.ruparupa.io/checkout',
+  stgApiURL: 'https://wapi.stg.ruparupa.io/',
+  // stgApiURL: 'https://wapi.stg.ruparupa.io/new-retail/',
+  stgTahuURL: 'https://gideon.ruparupa.com/wapi',
+  stgReviewRatingURL: 'https://oms.stg.ruparupa.io/wapi-review',
+
+  // DEV CONFIG
+  // Edit your self if you want to use dev 2 or dev 1
+  devPaymentURL: 'http://payment.dev.ruparupa.io/checkout',
+  devApiURL: 'http://wapi.dev.ruparupa.io/',
+  // stgTahuURL: 'https://gideon.ruparupa.com/wapi',
+
+  imageRR: 'https://res.cloudinary.com/ruparupa-com/image/upload/',
+  imageURL: 'https://res.cloudinary.com/ruparupa-com/image/upload/',
+  freeShippingCategory: ``,
+  assetsIconURL: 'https://res.cloudinary.com/ruparupa-com/image/upload/v1524213684/',
+  redeemPointDouble: '2018-05-06 23:59:59',
+  // mPulseScript: `var SOASTA={};!function(){if(!window.BOOMR||!window.BOOMR.version){var e,t,n,o=document.createElement("iframe"),a=window;a.addEventListener?a.addEventListener("load",i,!1):a.attachEvent&&a.attachEvent("onload",i),o.src="javascript:false",o.title="",o.role="presentation",(o.frameElement||o).style.cssText="width:0;height:0;border:0;display:none;",(n=document.getElementsByTagName("script")[0]).parentNode.insertBefore(o,n);try{t=o.contentWindow.document}catch(n){e=document.domain,o.src="javascript:var d=document.open();d.domain='"+e+"';void(0);",t=o.contentWindow.document}t.open()._l=function(){var t=this.createElement("script");e&&(this.domain=e),t.id="boomr-if-as",t.src="https://s.go-mpulse.net/boomerang/HTN99-DXGNW-Q549T-NZAUR-T8C93",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(t)},t.write('<body onload="document._l();">'),t.close()}function i(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}}();`,
+  expressDeliveryCookies: 'expressDelivery',
+  freshChatAppId: 'a331fd4e-be96-4846-a8c0-9bfd6a7041a5',
+  freshChatAppKey: '85078c8e-0677-41b5-baec-9335065604df',
+  googleMapApiKey: 'AIzaSyDyL_wc9BmJLFEZcxDtPfOMZFRv0JY7UqE',
+  googleMapsServerApiKey: 'AIzaSyBigeLAO-T9iWYt5k08-D9znSh4M7wtTkQ',
+  returnURL: 'https://m.ruparupa.com/faq-pengembalian',
+
+  // Version Prod
+  versionAndroid: '1.4.8',
+  versionIos: '1.4.7',
+  // Version Stg
+  versionStgAndroid: '1.2.1t',
+  versionStgIos: '1.2.1t',
+
+  freshServerApiAndroid: 'AAAA6yhmM7w:APA91bHE37mdevkNsBjkDxxG8jhrKkl9DygAqxBhO9An1E6HHhDeXu2cMWNS3QL_aEPxA_K-jyI9uUM-cnuUKEHRFx4TtGDYVo9xRTkQvF2Puw8DqGW-kKLKzh1H3Yc6JrZwxahMUpPI',
+  freshServerApiIos: '',
+  otpKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMGM0MjFmOTYtZmVkYS00MGZhLTlmOTktNTRhOThiY2IxMTE2IiwiaWF0IjoxNTcxMzY1ODM0LCJpc3MiOiJ3YXBpLnJ1cGFydXBhIn0.jdPYQ4zSTzLdatp8D9mUN4fXM020fvw6cXNChUv0qhQ',
+  deviceTokenURL: 'https://wapi.backend.ruparupa.io',
+  urlTnc: 'https://m.ruparupa.com/terms-conditions',
+  urlPrivacyPolicy: 'https://m.ruparupa.com/privacy-policy',
+  newRetailDynamicLink: 'https://ruparupamobileapp.page.link/newretail?id='
+}
+
+export default config

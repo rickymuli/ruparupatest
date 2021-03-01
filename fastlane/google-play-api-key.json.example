@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pc-api-8441734107652589009-424",
+  "private_key_id": "2d5bf4ea3709f41bdad2ed63c784b6e0f299d779",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDBuqLDeytK8YJx\nUkx4KQvTlajcmZlvHYryAwG3c7iuNnikjRhUhDoYFSHEUDQy1Bm8+vw8TfZr817i\nD9Kr9P3Sl3QV5uM/A+OGnLRqzUCK3RzsiRluoeBKNysvVdIliHL77pNcTcFeOfOC\nnkFWOLFXOyPbkxL4zuZ/IoWhSGh0ybK9uFy/MtKl1xVgXpoaX2WBE/0dD5Z0aAiK\nnOTb6x9re2X2zYE0wBG2gYAs0VsFC0vb4z06VdQYrLdqMdSnOFWkdPgfB8jH1SyZ\nKnruO6x6uKbkDXqMTtzjHWVfi3xG+PnrZRFeIdjqfYW4ZWzOjBMfXN/T7MlKjwJG\nVr1Uyej1AgMBAAECggEAJ04G9NM6AuAB/5zbb+uf/yMXmf4934nmZViP0hkT6KCb\nlIMd4xPat4UeDzbYiFF5EVr4rwGAVAGSCBp+uy2fC8l3n3PzOhc/Y9HKVvris+nN\nkv3z33rPRy9vPxDR7JSFA7ExS6Jo74WhbqhOCEDDVjfk/AkYacuMf1HRO9o1ezAQ\nRXTbsK4TcRQduKYJLQyUmne/pKirLe/4gFpkqIE9kVkglvL0QJE1C9Q3j+hSyRxM\n7w4mZN6tppNrcUFlcO3YzWkZk7POO1RFIyWk1BZQJxoeQHvfoDVjqrFMibzn4sHQ\nIq8vsmvs8tzy/uDKqhBVF3hOUh1S14vyVbn5lryGkQKBgQDwk+wUnqEPpHx20EAp\nDgilfANI/6ZfWSgovBj/zynZqlDd+9Hn9obj5dVbMuaEaD936fBpPEnzMdJETCi6\nlMO2dux6757ueoBX0NKXNImAGbG5dpDRuZPsVnZlR8K2eKan2BbhUchpT9adD1L5\nbEFEn4d2RWkHxAPhYztrhDBb3QKBgQDOJeMYDSDPgdu3QnwwUT23zq/+IDw2y92g\nXHiS2a2fikMNIkwGYRxkrSelZvg3MA/qe9aYIkKf43QqsW5yY8ty/xiqry0NuYjE\nbbkIL7wLrdoIJi4r9vRum6ulQ+nlOVigysg3d+BEva9kgBEfFi82vWq8BQZe05vB\ngOZeBG1b+QKBgCdgnui1Gjm8O58a8RWHNYUYqlT9e1bp+ffI6fKdDwWQqhHbkPz9\nzhBpYyW9TBvqEFFpWi9vbc8/nWIOcTAw/2PTTVvF8uan6G/3PzD+qW7tRbjMnmGl\nlX++mzxypX1GfEjGxt/0ifAq4D7u7i7jOD+qOPrz24Ao5lWy71vm1B+FAoGAYhyo\nC29cGUaNopey8XAI9q0ZF9KRtearEUJRZFrThmXQabTUCAk58TRz9QWfxuxJ9uh/\nhqJvoRco15TgovKaBp4gSEPdJnYSAKLT+HB3h/tzFIPPX79GMEpIk/xRmnYDl2tL\nhRK5mx3IFwXYoDn3uI7H+LpPgNwneh32BfMHdUkCgYEAvpk9ZIN9HoljxjzQlHK7\nIasB6Sx1HMPM0YLf2tRj20XnJotdWqmn+Yglr0LsguN2ZQ1Mel1/DeXsC/LmigzK\nU/w4rr+wLCCerguc/hCevB3BxaIH+1ZFI8pLZYArYP4mjYH86QT79ASDAiAJ+Q9f\nQuWaCjIvM/rCFfAeETFkFp8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "ruparupamobileapps-326@pc-api-8441734107652589009-424.iam.gserviceaccount.com",
+  "client_id": "115279011505985648837",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ruparupamobileapps-326%40pc-api-8441734107652589009-424.iam.gserviceaccount.com"
+}

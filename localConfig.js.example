@@ -1,0 +1,19 @@
+const config = {
+  DEBUG: false,
+  developmentENV: 'stg',
+  showTahu: false,
+  codePushDev: true,
+  codePushProd: false,
+  smartlookEnableRecord: false,
+  /**Config Below is only for using multi staging endpoints. if not then you may keep it as empty */
+  baseUrl: 'https://return.m.ruparupastg.my.id/',
+  multistaging: 'https://return.wapi.ruparupastg.my.id/',
+  projectName: '',
+  paymentMultistaging: 'https://return.payment.ruparupastg.my.id/checkout',
+  returnRefundUrl: 'https://return.oms.ruparupastg.my.id/wapi-backend/',
+  companyCode: 'ODI',
+  test:123,
+  hai: 123
+}
+
+export default config
