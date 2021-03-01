@@ -188,6 +188,8 @@ jobs:
           command: |
             mkdir -p build-results/fastlane
             bundle exec fastlane android dev
+          no_output_timeout: 18m
+
       # - store_test_results:
       #     path: test-results
 
