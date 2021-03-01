@@ -130,6 +130,8 @@ jobs:
     working_directory: ~/ruparupamobileapps
     docker:
       - image: circleci/android:api-29-node
+    environment:                      
+      _JAVA_OPTIONS: -XX:MaxRAMPercentage=99
     steps:
       - checkout:
           path: ~/ruparupamobileapps
@@ -144,7 +146,7 @@ jobs:
               echo "======"
             done
           background: true
-          
+
       - run:
           command: cp fastlane/appcenter-config.json.example fastlane/appcenter-config.json
           name: Copy appcenter config
