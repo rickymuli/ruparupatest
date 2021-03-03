@@ -131,11 +131,9 @@ jobs:
     docker:
       - image: circleci/android:api-29-node
     environment:                      
-      _JAVA_OPTIONS: "-Xmx1600m -XX:+UnlockExperimentalVMOptions -XX:ParallelGCThreads=1 -XX:ConcGCThreads=1 -Djava.util.concurrent.ForkJoinPool.common.parallelism=1 -Dkotlin.compiler.execution.strategy=in-process"
-      GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx1600m"'
-      REACT_NATIVE_MAX_WORKERS: 1
-      NODE_ENV: "production"
-      NODE_OPTIONS: "--max-old-space-size=500 --max_old_space_size=500"
+      - _JAVA_OPTIONS: "-Xms518m -Xmx2048m"
+      - GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
+      - BUILD_THREADS: 2
     steps:
       - checkout:
           path: ~/ruparupamobileapps
@@ -190,8 +188,7 @@ jobs:
       - run:
           name: fastlane dev
           command: |
-            mkdir -p build-results/fastlane
-            bundle exec fastlane android dev
+            npm run android:build
           no_output_timeout: 18m
 
       # - store_test_results:
@@ -203,7 +200,7 @@ jobs:
 workflows:
   node-android-ios:
     jobs:
-      - node
+      # - node
       - android-build-and-test:
-          requires:
-            - node
+          # requires:
+          #   - node
