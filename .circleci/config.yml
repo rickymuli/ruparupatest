@@ -148,7 +148,9 @@ jobs:
               echo "======"
             done
           background: true
-
+      - run:
+          command: jetify
+          name: npx jetify
       - run:
           command: cp fastlane/appcenter-config.json.example fastlane/appcenter-config.json
           name: Copy appcenter config
