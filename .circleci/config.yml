@@ -36,8 +36,8 @@ jobs:
 
       - run:
           command: jetify
-          name: npx jetify
-
+          name: npm run jetify
+          
       - persist_to_workspace:
           root: ~/ruparupamobileapps
           paths:
