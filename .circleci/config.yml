@@ -34,9 +34,9 @@ jobs:
       #     environment:
       #       JEST_JUNIT_OUTPUT: test-results/jest/junit.xml
 
-      - run:
-          command: jetify
-          name: npm run jetify
+      # - run:
+      #     command: jetify
+      #     name: npm run jetify
           
       - persist_to_workspace:
           root: ~/ruparupamobileapps
