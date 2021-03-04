@@ -17,9 +17,21 @@ jobs:
         - run: 
             name: npm i
             command: npm i
-        # - run: 
-        #     name: yarn install
-        #     command: yarn install
+        - run:
+            command: cp fastlane/appcenter-config.json.example fastlane/appcenter-config.json
+            name: Copy appcenter config
+        - run:
+            command: cp fastlane/changelog.txt.example fastlane/changelog.txt
+            name: Copy changelog
+        - run:
+            command: cp android/app/ruparupa-mobileapp-key.keystore.example android/app/ruparupa-mobileapp-key.keystore
+            name: Copy keystore
+        - run:
+            command: cp android/app/debug.keystore.example android/app/debug.keystore
+            name: Copy keystore2
+        - run:
+            command: cp localConfig.js.example localConfig.js
+            name: Copy localConfig
         - run: 
             name: npx jetify
             command: npx jetify
