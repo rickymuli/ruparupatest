@@ -42,7 +42,7 @@ jobs:
         - run: 
             name: fastlane beta
             no_output_timeout: 30m
-            command: react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output App/src/main/assets/index.android.bundle --assets-dest App/src/main/res/
+            command: npx react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output App/src/main/assets/index.android.bundle --assets-dest App/src/main/res/
         - run: 
             name: build
             no_output_timeout: 30m
