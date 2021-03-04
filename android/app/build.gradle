@@ -80,7 +80,7 @@ import com.android.build.OutputFile
 
 project.ext.react = [
     enableHermes: true,  // clean and rebuild if changing
-    extraPackagerArgs: ["--max-workers=1"]
+    inputExcludes: ["ios/**", "__tests__/**", "bundle_out/**"]
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -142,9 +142,9 @@ android {
         versionName "1.7.7"
         multiDexEnabled true
     }
-    // dexOptions {
-    //     javaMaxHeapSize "4g"
-    // }
+    dexOptions {
+        javaMaxHeapSize "8g"
+    }
     splits {
         abi {
             reset()
