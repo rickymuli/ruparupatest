@@ -5,8 +5,6 @@ jobs:
         # Configure the JVM and Gradle to avoid OOM errors
         _JAVA_OPTIONS: "-Xms512m -Xmx2g"
         GRADLE_OPTS: '-Xmx3g -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx2g -XX:+HeapDumpOnOutOfMemoryError"'
-        LC_ALL: en_US.UTF-8
-        LANG: en_US.UTF-8
     docker:
         - image: reactnativecommunity/react-native-android
     steps:
