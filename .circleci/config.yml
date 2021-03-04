@@ -44,7 +44,7 @@ jobs:
         - run: 
             name: fastlane beta
             no_output_timeout: 30m
-            command: npm run android:build
+            command: fastlane android:dev
         - run: 
             name: list
             command: ls android/app/build/outputs/apk/release
