@@ -190,7 +190,7 @@ jobs:
       - run:
           name: fastlane dev
           command: |
-            fastlane android:dev
+            fastlane android dev
           no_output_timeout: 30m
       - run: 
           name: list
