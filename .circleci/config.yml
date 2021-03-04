@@ -33,9 +33,9 @@ jobs:
         - run: 
             name: npx jetify
             command: npx jetify
-        - run: 
-            name: Install Fastlane 
-            command: gem install fastlane
+        # - run: 
+        #     name: Install Fastlane 
+        #     command: gem install fastlane
         - run:
             name: bundle install
             command: cd android && bundle install
@@ -46,7 +46,7 @@ jobs:
         - run: 
             name: build
             no_output_timeout: 30m
-            command: ./gradlew assembleRelease -x bundleReleaseJsAndAssets
+            command: cd android && ./gradlew assembleRelease -x bundleReleaseJsAndAssets
         - run: 
             name: list
             command: ls android/app/build/outputs/apk/release
